@@ -8,7 +8,7 @@ segmentos = [
 ]
 
 def procesar(segmentos, reqs, marcos_libres):
-    TAM_PAG = 0x20
+    TAM_PAG = 0x10
     tabla_marcos = {}
     tiempos_lru = {}
     contador = 0
@@ -31,7 +31,7 @@ def procesar(segmentos, reqs, marcos_libres):
             continue
 
         if marcos_libres:
-            marco_libre = marcos_libres.pop()
+            marco_libre = marcos_libres.pop(0)
             tabla_marcos[pagina_virtual] = marco_libre
             tiempos_lru[pagina_virtual] = contador
             resultados.append((dir_logica, (marco_libre << 4) + offset, "Marco libre asignado"))
